@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Formulário - Tema Escuro</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #111;
+        color: #fff;
+        margin: 0;
+        padding: 20px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 420px;
+        margin: auto;
+        background: #1a1a1a;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 12px rgba(0,0,0,0.6);
+    }
+    label {
+        display: block;
+        margin-top: 12px;
+        font-size: 15px;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 6px;
+        border: none;
+        border-radius: 8px;
+        background: #2a2a2a;
+        color: #fff;
+        font-size: 14px;
+    }
+    textarea { height: 80px; }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 18px;
+        background: #0af;
+        color: #000;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    button:hover { background: #08c; }
+
+    table {
+        width: 100%;
+        margin-top: 10px;
+        border-collapse: collapse;
+        font-size: 13px;
+    }
+    th, td {
+        border: 1px solid #333;
+        padding: 6px;
+        text-align: center;
+    }
+    th { background: #222; }
+    td { background: #1a1a1a; }
+
+    .pix-box{
+        background:#181818;
+        padding:15px;
+        border-radius:10px;
+        margin-top:20px;
+        text-align:center;
+        border:1px solid #333;
+    }
+    .pix-btn{
+        margin-top:10px;
+        background:#0f0;
+        color:#000;
+        padding:10px 14px;
+        border-radius:8px;
+        font-weight:bold;
+        cursor:pointer;
+        border:none;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Formulário IPTV</h2>
+
+    <label>Nome completo:</label>
+    <input type="text" id="nome" />
+
+    <label>Instagram:</label>
+    <input type="text" id="instagram" />
+
+    <label>Contato:</label>
+    <input type="text" id="contato" />
+
+    <label>Selecione o plano:</label>
+    <select id="plano">
+        <option value="Básico 1">Básico 1 - R$20,00 - 1 acesso - 1 tela - 1 mês</option>
+        <option value="Básico 2">Básico 2 - R$35,00 - 2 acessos - 2 telas - 1 mês</option>
+        <option value="Básico 3">Básico 3 - R$35,00 - 1 acesso - 1 tela - 2 meses</option>
+        <option value="Básico 4">Básico 4 - R$60,00 - 2 acessos - 2 telas - 1 mês</option>
+        <option value="Premium 1">Premium 1 - R$35,00 - 1 acesso - 3 telas - 1 mês</option>
+        <option value="Premium 2">Premium 2 - R$60,00 - 1 acesso - 3 telas - 2 meses</option>
+        <option value="Premium 3">Premium 3 - R$60,00 - 2 acessos - 6 telas - 1 mês</option>
+        <option value="Premium 4">Premium 4 - R$55,00 - 2 acessos - 3 telas - 2 meses</option>
+    </select>
+
+    <button onclick="enviarWhatsApp()">Enviar para WhatsApp</button>
+
+    <div class="pix-box">
+        <h3>Pagamento via PIX</h3>
+        <p><strong>Chave PIX:</strong><br> 98984925359</p>
+        <button class="pix-btn" onclick="copiarPix()">Copiar chave PIX</button>
+    </div>
+</div>
+
+<script>
+function enviarWhatsApp(){
+    let nome = document.getElementById('nome').value;
+    let insta = document.getElementById('instagram').value;
+    let contato = document.getElementById('contato').value;
+    let plano = document.getElementById('plano').value;
+
+    let msg = encodeURIComponent(
+        `📋 *NOVO CADASTRO*
+
+👤 Nome: ${nome}
+📱 Contato: ${contato}
+📸 Instagram: ${insta}
+📦 Plano escolhido: ${plano}`
+    );
+
+    window.location.href = "https://wa.me/5585988855751?text=" + msg;
+}
+
+function copiarPix(){
+    navigator.clipboard.writeText("98984925359");
+    alert("Chave PIX copiada!");
+}
+</script>
+
+</body>
+</html>
